@@ -1,8 +1,8 @@
 <?php
 
-namespace DevArjhay\Honeypot\Providers;
+namespace Appel\Honeypot\Providers;
 
-use DevArjhay\Honeypot\Honeypot;
+use Appel\Honeypot\Honeypot;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,7 +43,7 @@ class HoneypotServiceProvider extends ServiceProvider
 
         Blade::directive('honeypot', function ($expression) {
             list($name, $time) = explode(', ', str_replace(['(',')'], '', $expression));
-            return \DevArjhay\Honeypot\Facades\Honeypot::make(trim($name, "'"), trim($time, "'"));
+            return \Appel\Honeypot\Facades\Honeypot::make(trim($name, "'"), trim($time, "'"));
         });
     }
 
