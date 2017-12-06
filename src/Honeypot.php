@@ -1,33 +1,34 @@
 <?php
-/**
- * Author: Arjhay Delos Santos
- * Date: 8/23/2017
- * Time: 6:18 PM
- */
 
-namespace DevArjhay\Honeypot;
+namespace Appel\Honeypot;
 
 use Illuminate\Support\Facades\Crypt;
 
 class Honeypot
 {
     /**
-     * @var mixed
+     * @var bool
      */
     protected $enabled;
 
     /**
-     * @var mixed
+     * @var string
      */
     protected $auto_complete;
+
+    /**
+     * @var string
+     */
+    protected $hide_mode;
 
     /**
      * Honeypot constructor.
      */
     public function __construct()
     {
-        $this->enabled = config('honeypot.enabled');
+        $this->enabled       = config('honeypot.enabled');
         $this->auto_complete = config('honeypot.auto_complete');
+        $this->hide_mode     = config('honeypot.hide_mode');
     }
 
     /**
@@ -40,11 +41,28 @@ class Honeypot
     public function make($name, $time)
     {
         $encrypted = $this->getEncryptedTime();
-        $html = '<div id="' . $name . '_wrap" style="display: none;">' . "\r\n" .
+        $html = '<div id="' . $name . '_wrap" style="' . $this->getDisplayStyle() . '">' . "\r\n" .
                     '<input type="text" name="' . $name . '" id="' . $name . '" value="" autocomplete="' . $this->auto_complete . '">' . "\r\n" .
                     '<input type="text" name="' . $time . '" id="' . $time . '" value="' . $encrypted .'" autocomplete="' . $this->auto_complete . '">' . "\r\n" .
                 '</div>';
         return $html;
+    }
+
+    /**
+     * Set the style attribute for the containing <div>
+     * 
+     * @return string
+     * @throws \Exception
+     */
+    protected function getDisplayStyle()
+    {
+        if ($this->hide_mode == 'hide') {
+            return 'display:none';
+        }
+        if ($this->hide_mode == 'off-screen') {
+            return 'position:absolute;right:50000px';
+        }
+        throw new \Exception('Honeypot display not set');
     }
 
     /**

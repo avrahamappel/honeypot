@@ -1,13 +1,14 @@
 {
-    "name": "devarjhay/honeypot",
-    "description": "A simple spam protection for Laravel 5.4.",
+    "name": "appel/honeypot",
+    "description": "A simple spam protection for Laravel 5.5.",
     "keywords": [
         "laravel",
         "spam",
         "forms",
         "honeypot",
         "honeytime",
-        "devarjhay"
+        "appel",
+        "bomshteyn"
     ],
     "license": "MIT",
     "authors": [
@@ -29,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DevArjhay\\Honeypot\\": "src/"
+            "Appel\\Honeypot\\": "src/"
         },
         "files": [
             "src/helpers.php"
