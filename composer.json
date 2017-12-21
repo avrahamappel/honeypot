@@ -35,5 +35,15 @@
         "files": [
             "src/helpers.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Appel\\Honeypot\\Providers\\HoneypotServiceProvider"
+            ],
+            "aliases": {
+                "Honeypot": "Appel\\Honeypot\\Facades\\Honeypot"   
+            }
+        }
     }
 }
