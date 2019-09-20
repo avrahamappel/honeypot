@@ -2,7 +2,7 @@
 
 use Appel\Honeypot\Facades\Honeypot;
 
-if (!function_exists('honeypot'))
+if (! function_exists('honeypot'))
 {
     function honeypot($name, $time)
     {
