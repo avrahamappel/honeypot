@@ -1,5 +1,5 @@
 # Honeypot: Spam Prevention
-A simple spam prevention package for Laravel 5.5.
+A simple spam prevention package for Laravel.
 
 # Installation:
 ### Composer
