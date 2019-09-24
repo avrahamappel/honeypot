@@ -1,6 +1,6 @@
 {
     "name": "appel/honeypot",
-    "description": "A simple spam protection for Laravel 5.5.",
+    "description": "A simple spam protection for Laravel.",
     "keywords": [
         "laravel",
         "spam",
